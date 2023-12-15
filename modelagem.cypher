@@ -14,7 +14,8 @@ MERGE (
         codigo: row.airport_code,
         latitude: row.latitude,
         longitude: row.longitude,
-        altitude: row.altitude
+        altitude: row.altitude,
+        cidade: row.city
     }
 )
 MERGE (
@@ -55,5 +56,8 @@ LOAD CSV WITH HEADERS FROM 'file:///routes.csv' AS row
 MATCH (a:Aeroporto {id: row.source_airport_id})
 MATCH (b:Aeroporto {id: row.destination_airport_id})
 MATCH (c:Companhia {id: row.airline_id})
+MATCH (c1:Cidade {cidade: a.cidade})
+MATCH (c2:Cidade {cidade: b.cidade})
 MERGE (a)-[:possui_passagem_pela]->(c)
-MERGE (c)-[:oferece_voo_para]->(b);
+MERGE (c)-[:oferece_voo_para]->(b)
+MERGE (c1)-[:tem_rota_com]->(c2);
