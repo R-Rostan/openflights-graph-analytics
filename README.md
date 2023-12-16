@@ -1,6 +1,6 @@
 # Openflight Graph Analytics
 
-Neste repositório estão disponíveis scripts em Cypher, que podem ser utilizados para análise de grafos com dados da [OpenFlights](openflights.org).
+Neste repositório estão disponíveis scripts em Cypher, que podem ser utilizados para análise de grafos com dados da [OpenFlights](https://openflights.org).
 
 ### Modelo de dados desenvolvido neste projeto
 <img src="./graph.png" alt="Modelo de dados desenvolvido" width="50%" height="50%" />
