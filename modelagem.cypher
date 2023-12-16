@@ -50,7 +50,7 @@ MERGE (a)-[:fica_em]->(c);
 LOAD CSV WITH HEADERS FROM 'file:///airports.csv' AS row
 MATCH (c:Cidade {cidade: row.city})
 MATCH (p:Pais {pais: row.country})
-MERGE (c)-[:cidade_de]->(p);
+MERGE (c)-[:do_pais]->(p);
 
 LOAD CSV WITH HEADERS FROM 'file:///routes.csv' AS row
 MATCH (a:Aeroporto {id: row.source_airport_id})
@@ -58,6 +58,11 @@ MATCH (b:Aeroporto {id: row.destination_airport_id})
 MATCH (c:Companhia {id: row.airline_id})
 MATCH (c1:Cidade {cidade: a.cidade})
 MATCH (c2:Cidade {cidade: b.cidade})
-MERGE (a)-[:possui_passagem_pela]->(c)
 MERGE (c)-[:oferece_voo_para]->(b)
-MERGE (c1)-[:tem_rota_com]->(c2);
+MERGE (c1)-[:tem_rota_com]->(c2)
+MERGE (a)-[:faz_conexao_com]->(b);
+
+LOAD CSV WITH HEADERS FROM 'file:///airlines.csv' AS row
+MATCH (c:Companhia {id: row.airline_id})
+MATCH (p:Pais {pais: row.country})
+MERGE (c)-[:com_sede_em]->(p);
