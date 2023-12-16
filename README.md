@@ -3,7 +3,7 @@
 Neste repositório estão disponíveis scripts em Cypher, que podem ser utilizados para análise de grafos com dados da [OpenFlights](openflights.org).
 
 ### Modelo de dados desenvolvido neste projeto
-![Exemplo de visualização de grafos](./graph.png)
+<img src="./graph.png" alt="Modelo de dados desenvolvido" width="50%" height="50%" />
 
 ### Scripts
 - **openflights_extract.py:** Baixa as bases necessárias para criação do modelo de dados e insere os cabeçalhos.
